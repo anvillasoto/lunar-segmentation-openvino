@@ -42,7 +42,7 @@ Fortunately, there exists one labelled dataset of lunar landscape images that co
 
 
 
-### Unet Topology
+## Unet Topology
 As mentioned above, in the current projectm, we used Unet Topology. Olaf Ronneberger et al. developed this model for Bio Medical Image Segmentation. The model's architecture is divided in two sections. The utility of the first part, also known as the contraction path (encoder), is to capture the context in the image. The encoder consists of convolutional and max poolong layers. The second part, also known as the decoder is responsible for the precise localization , with the use of transposed convolutions. It is a fully convolutional network, which consists of convolutional layers, without any dense layer, which enables it to accept images of any size. Upsampling operators that replace pooling operations, increase the resolution of the output. The prediction of the pixels in the border region of the image, is achived by extrapolating the missing context, by mirroring the input image. This tiling strategy enables the application of the network to large images, since otherwise the resolution would be limited by the GPU memory.
 
 ![unet topology-paper](https://github.com/geochri/lunar-segmentation-openvino/blob/master/unet_topology.png)
