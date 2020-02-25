@@ -42,6 +42,16 @@ Deep learning and computer vision problems always rely on [vast amounts of data]
 
 Fortunately, there exists one labelled dataset of lunar landscape images that could be used for our purpose of employing machine learning approach to object detection or segmentation (see the dataset section of this document for more information about the dataset).
 
+## Dataset
+
+The dataset employed in the current project was created by the Ishigami Laboratory (Space Robotics Group) of Keio University, Japan (https://www.kaggle.com/romainpessia/artificial-lunar-rocky-landscape-dataset). In order the dataset to be realistic,  NASA's LRO LOLA Elevation Model (https://astrogeology.usgs.gov/search/details/Moon/LRO/LOLA/Lunar_LRO_LOLA_Global_LDEM_118m_Mar2014/cub) was used. 
+
+The digital elevation model (DEM) is based on data from the Lunar Orbiter Laser Altimeter (LOLA; Smith et al., 2010), an instrument on the National Aeronautics and Space Agency (NASA) Lunar Reconnaissance Orbiter (LRO) spacecraft (Tooley et al., 2010). The created DEM represents more than 6.5 billion measurements gathered between July 2009 and July 2013, adjusted for consistency in the coordinate system described below, and then converted to lunar radii (Mazarico et al., 2012). Elevations were computed by subtracting the lunar reference radius of 1737.4 km from the surface radius measurements (LRO Project and LGCWG, 2008; Archinal et al., 2011). 
+Then the dataset creator used Terragen 4 (https://planetside.co.uk/) to render realistic CG lunar environment, based on the above mentioned DEM to extract elevation. 
+
+The dataset currently contains 9,766 realistic renders of rocky lunar landscapes, and their segmented equivalents (the 3 classes are the sky, smaller rocks, and larger rocks). A table of bounding boxes for all larger rocks and processed, cleaned-up ground truth images are also provided. We recommend that users check the "Understanding and Using the Dataset" kernel which contains additional information on the dataset.
+
+
 ## Semantic Segmentation
 The objective of Semantic image Segmentation is to classify each pixel of an image, based on what it represents. This procedure is repeated and applied in every single pixel of an image, thus this task is also known as dense prediction. Contrary to other techniques, like image classification, classification with localization and object detection, semantic segmentation provides a high resolution image, of the same size as the input image, where each picture corresponds to a specific class. Therefore, in semantic segmentation the output is not labels and box parameters, but a pixel by pixel classification.
 
@@ -123,14 +133,6 @@ This is beneficial for our purpose since our model which was written using PyTor
 ### Large Rock Detection Results
 
 
-## Dataset
-
-The dataset employed in the current project was created by the Ishigami Laboratory (Space Robotics Group) of Keio University, Japan (https://www.kaggle.com/romainpessia/artificial-lunar-rocky-landscape-dataset). In order the dataset to be realistic,  NASA's LRO LOLA Elevation Model (https://astrogeology.usgs.gov/search/details/Moon/LRO/LOLA/Lunar_LRO_LOLA_Global_LDEM_118m_Mar2014/cub) was used. 
-
-The digital elevation model (DEM) is based on data from the Lunar Orbiter Laser Altimeter (LOLA; Smith et al., 2010), an instrument on the National Aeronautics and Space Agency (NASA) Lunar Reconnaissance Orbiter (LRO) spacecraft (Tooley et al., 2010). The created DEM represents more than 6.5 billion measurements gathered between July 2009 and July 2013, adjusted for consistency in the coordinate system described below, and then converted to lunar radii (Mazarico et al., 2012). Elevations were computed by subtracting the lunar reference radius of 1737.4 km from the surface radius measurements (LRO Project and LGCWG, 2008; Archinal et al., 2011). 
-Then the dataset creator used Terragen 4 (https://planetside.co.uk/) to render realistic CG lunar environment, based on the above mentioned DEM to extract elevation. 
-
-The dataset currently contains 9,766 realistic renders of rocky lunar landscapes, and their segmented equivalents (the 3 classes are the sky, smaller rocks, and larger rocks). A table of bounding boxes for all larger rocks and processed, cleaned-up ground truth images are also provided. We recommend that users check the "Understanding and Using the Dataset" kernel which contains additional information on the dataset.
 
 ## Further work
 Implementing and testing SegNet, ENet, ICNet on openvino.
