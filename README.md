@@ -61,9 +61,12 @@ As mentioned above, in the current project, we used Unet Topology for Semantic S
 #### Why Unet
 There are several advantages in using U-net for our project. First of all, considering the limited dataset sample we were dealing with, U-net provided the optimal results, as it has been tested as a segmentation tool in projects with small datasets, e.g. less than 50 training samples. Second, an also important feature of U-net is that it can be used with large images datasets, as it does not have any fully connected layers. Owing to this characteristic, features from images with different sizes, can be extracted. Summing the above benefits and considering the limitations we faced with our dataset, U-net was selected as the ideal segmentation tool for our lunar project.
 
+#### Large Rock Detection
+As earlier mentioned, detecting large rocks in planetary images is crucial for planetary scientist and Geologists. Generally, identifying rocks in images of planetary surfaces is a very challenging task, mostly because rocks exhibit diverse morphologies, textures, colors, shape and other attributes that can be used to differentiate rocks from other features. In order, to solve this problem, we have tried several deep neural network architectures before settling down with ResNet34. The choice is of this network was based primarily on the model performance, hardware restrictions and the time taken for training. 
+ 
+#### ResNet34
 
-
-
+ResNet which is short for Residual Network. is a type of specialized neural network that is well suited for sophisticated deep learning tasks. It has led to many break throughs in image classification and has received growing attention for its effectiveness for training deep networks. ResNet-34 is a 34 layer deep convolutional neural network that is pretrained on the ImageNet database which contains more the one million images. ResNet makes use of "skip connections" which are used to allow gradients to flow through a network directly, without passing through non-linear activation functions. This is a very important characteristic of this network, as it overcomes some problems of other deep neural networks like "vanishing gradient" problem which occurs when gradients become too small to be immediately useful. In addition, it prevents overfitting, where models learn intricate details from training data that prevent them from generalizing enough unseen data.  
 ### How to make these models usable
 
 Especially when we want to use the model locally on lunar rovers, it is obviously infeasible to run predictions to the cloud and get back to the rover. That is why real-time processing is necessary for applications such as these. In our case, our model must be accurate and fast enough to spit out predictions locally. Not to mention the issue of [energy efficiency](https://www.researchgate.net/publication/332463258_Low-Power_Computer_Vision_Status_Challenges_Opportunities) when it comes to building a pipelined approach in realizing these powerful systems. 
@@ -79,7 +82,7 @@ This is beneficial for our purpose since our model which was written using PyTor
 
 ## Results
 
-### Pytorch results
+### Segmentation Results
 #### Untrained model
 ![Input Image](https://github.com/geochri/lunar-segmentation-openvino/blob/master/art_realistic_moon3.png)
 ![Untrained result](https://github.com/geochri/lunar-segmentation-openvino/blob/master/art_realistic_moon3_untrained_model.png)
@@ -110,6 +113,8 @@ This is beneficial for our purpose since our model which was written using PyTor
 
 
 [Segmentation Demo-Video](https://github.com/anvillasoto/lunar-segmentation-openvino/blob/master/demo.mp4)
+
+### Large Detection Results
 
 
 ## Dataset
