@@ -81,21 +81,21 @@ This is beneficial for our purpose since our model which was written using PyTor
 ![Untrained result](https://github.com/geochri/lunar-segmentation-openvino/blob/master/art_realistic_moon3_untrained_model.png)
 
 #### Results after training
-##### Example1
+##### Example1 - input/ground truth/prediction
 ![Input Image1](https://github.com/geochri/lunar-segmentation-openvino/blob/master/art_realistic_moon.png)
 ![Ground truth1](https://github.com/geochri/lunar-segmentation-openvino/blob/master/art_realistic_moon_ground_truth.png)
 ![Prediction image1](https://github.com/geochri/lunar-segmentation-openvino/blob/master/art_realistic_moon_prediction.png)
-##### Example2
+##### Example2 - input/ground truth/prediction
 ![Input Image2](https://github.com/geochri/lunar-segmentation-openvino/blob/master/art_realistic_moon2.png)
 ![Ground truth2](https://github.com/geochri/lunar-segmentation-openvino/blob/master/art_realistic_moon_ground_truth2.png)
 ![Prediction image2](https://github.com/geochri/lunar-segmentation-openvino/blob/master/art_realistic_moon_prediction2.png)
 
-##### Example3
+##### Example3 - input/ground truth/prediction
 ![Input Image3](https://github.com/geochri/lunar-segmentation-openvino/blob/master/lunar_rock_segmentationV4_local_train.jpg)
 ![Ground truth3](https://github.com/geochri/lunar-segmentation-openvino/blob/master/lunar_rock_segmentationV4_local_mask.jpg)
 ![Prediction image3](https://github.com/geochri/lunar-segmentation-openvino/blob/master/lunar_rock_segmentationV4_local_pred.jpg)
 
-##### Real moon prediction
+##### Real moon prediction - input/prediction
 ![Input Image2](https://github.com/geochri/lunar-segmentation-openvino/blob/master/real_moon.png)
 ![Prediction image2](https://github.com/geochri/lunar-segmentation-openvino/blob/master/prediction_real_moon.png)
 
@@ -105,7 +105,7 @@ This is beneficial for our purpose since our model which was written using PyTor
 ![Segmentation Demo](https://github.com/geochri/lunar-segmentation-openvino/blob/master/demo.gif)
 
 
-[Segmentation Demo-Video](https://github.com/anvillasoto/lunar-segmentation-openvino/blob/master/demo.mp4).
+[Segmentation Demo-Video](https://github.com/anvillasoto/lunar-segmentation-openvino/blob/master/demo.mp4)
 
 
 ## Dataset
