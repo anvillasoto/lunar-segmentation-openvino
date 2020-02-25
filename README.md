@@ -117,3 +117,6 @@ Then the dataset creator used Terragen 4 (https://planetside.co.uk/) to render r
 
 The dataset currently contains 9,766 realistic renders of rocky lunar landscapes, and their segmented equivalents (the 3 classes are the sky, smaller rocks, and larger rocks). A table of bounding boxes for all larger rocks and processed, cleaned-up ground truth images are also provided. We recommend that users check the "Understanding and Using the Dataset" kernel which contains additional information on the dataset.
 
+## Further work
+Implementing and testing SegNet, ENet, ICNet on openvino.
+
