@@ -42,11 +42,11 @@ Especially when we want to use the model locally on lunar rovers, it is obviousl
 To overcome these challenges, we need to have a toolkit that solves these problems while also proactively support frameworks that produces state-of-the-art segmentation models that fit our purpose. 
 
 
-## AI to the Edge and The Intel® OpenVINO™ Toolkit
+## AI at the Edge and The Intel® OpenVINO™ Toolkit
 
+In response to the need for robust yet low-powered solutions for computer vision tasks that can be installed as an auxiliary system for autonomous systems, Intel released the OpenVINO toolkit to enable developers to do just that. Per the [documentation](https://software.intel.com/en-us/openvino-toolkit), OpenVINO enables deep learning inference right within edge, accelerates AI workloads, including computer vision with open support for many computer vision libraries such as OpenCV, OpenCL™, and other industry frameworks and libraries like PyTorch, Caffe, and TensorFlow.
 
-
-
+This is beneficial for our purpose since our model which was written using PyTorch, needs to be converted into a system in such a way that it can run without cloud supervision, can be optimized using Intel hardware which are [currently being used by these autonomous vehicles for their computation requirements](https://newsroom.intel.com/news/intel-hosts-nasa-frontier-development-lab-demo-day-2018-research-presentations/#gs.xf1snl).
 
 ## Dataset
 
