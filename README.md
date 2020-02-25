@@ -75,6 +75,8 @@ In response to the need for robust yet low-powered solutions for computer vision
 This is beneficial for our purpose since our model which was written using PyTorch, needs to be converted into a system in such a way that it can run without cloud supervision, can be optimized using Intel hardware which are [currently being used by these autonomous vehicles for their computation requirements](https://newsroom.intel.com/news/intel-hosts-nasa-frontier-development-lab-demo-day-2018-research-presentations/#gs.xf1snl).
 
 
+## Results
+
 ### Pytorch results
 #### Untrained model
 ![Input Image](https://github.com/geochri/lunar-segmentation-openvino/blob/master/art_realistic_moon3.png)
