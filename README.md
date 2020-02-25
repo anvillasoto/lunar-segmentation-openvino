@@ -42,7 +42,7 @@ Deep learning and computer vision problems always rely on [vast amounts of data]
 
 Fortunately, there exists one labelled dataset of lunar landscape images that could be used for our purpose of employing machine learning approach to object detection or segmentation (see the dataset section of this document for more information about the dataset).
 
-#### Semantic Segmentation
+## Semantic Segmentation
 The objective of Semantic image Segmentation is to classify each pixel of an image, based on what it represents. This procedure is repeated and applied in every single pixel of an image, thus this task is also known as dense prediction. Contrary to other techniques, like image classification, classification with localization and object detection, semantic segmentation provides a high resolution image, of the same size as the input image, where each picture corresponds to a specific class. Therefore, in semantic segmentation the output is not labels and box parameters, but a pixel by pixel classification.
 
 ####  Semantic Segmentation-Applications
@@ -53,7 +53,7 @@ Some applications of Semantic Segmentation can be summarized as follows:
 - Geo Sensing
 - Precision Agriculture
 
-## Unet Topology
+### Unet Topology
 As mentioned above, in the current project, we used Unet Topology for Semantic Segmentation. Olaf Ronneberger et al. developed this model for Bio Medical Image Segmentation. The model's architecture is divided in two sections. The utility of the first part, also known as the contraction path (encoder), is to capture the context in the image. The encoder consists of convolutional and max poolong layers. The second part, also known as the decoder is responsible for the precise localization , with the use of transposed convolutions. It is a fully convolutional network, which consists of convolutional layers, without any dense layer, which enables it to accept images of any size. Upsampling operators that replace pooling operations, increase the resolution of the output. The prediction of the pixels in the border region of the image, is achived by extrapolating the missing context, by mirroring the input image. This tiling strategy enables the application of the network to large images, since otherwise the resolution would be limited by the GPU memory.
 
 ![unet topology-paper](https://github.com/geochri/lunar-segmentation-openvino/blob/master/unet_topology.png)
@@ -61,10 +61,10 @@ As mentioned above, in the current project, we used Unet Topology for Semantic S
 #### Why Unet
 There are several advantages in using U-net for our project. First of all, considering the limited dataset sample we were dealing with, U-net provided the optimal results, as it has been tested as a segmentation tool in projects with small datasets, e.g. less than 50 training samples. Second, an also important feature of U-net is that it can be used with large images datasets, as it does not have any fully connected layers. Owing to this characteristic, features from images with different sizes, can be extracted. Summing the above benefits and considering the limitations we faced with our dataset, U-net was selected as the ideal segmentation tool for our lunar project.
 
-#### Large Rock Detection
+## Large Rock Detection
 As earlier mentioned, detecting large rocks in planetary images is crucial for planetary scientist and Geologists. Generally, identifying rocks in images of planetary surfaces is a very challenging task, mostly because rocks exhibit diverse morphologies, textures, colors, shape and other attributes that can be used to differentiate rocks from other features. In order, to solve this problem, we have tried several deep neural network architectures before settling down with ResNet34. The choice is of this network was based primarily on the model performance, hardware restrictions and the time taken for training. 
  
-#### ResNet34
+### ResNet34
 
 ResNet which is short for Residual Network. is a type of specialized neural network that is well suited for sophisticated deep learning tasks. It has led to many break throughs in image classification and has received growing attention for its effectiveness for training deep networks. ResNet-34 is a 34 layer deep convolutional neural network that is pretrained on the ImageNet database which contains more the one million images. ResNet makes use of "skip connections" which are used to allow gradients to flow through a network directly, without passing through non-linear activation functions. This is a very important characteristic of this network, as it overcomes some problems of other deep neural networks like "vanishing gradient" problem which occurs when gradients become too small to be immediately useful. In addition, it prevents overfitting, where models learn intricate details from training data that prevent them from generalizing enough unseen data. By utilizing deep residual learning frameworks, we could harness the power of deep networks and minimize the weaknesses.
 
