@@ -1,5 +1,7 @@
 # Image Segmentation on Artificial Lunar Landscape Dataset
-![logo](https://github.com/geochri/lunar-segmentation-openvino/blob/master/logo_lunarX.png)
+
+<img src="https://github.com/geochri/lunar-segmentation-openvino/blob/master/logo_lunarX.png" alt="logo" width="550"/>
+
 ## Abstract
 
 An implementation of PyTorch's UNet Model for Image Segmentation on Artificial Lunar Landscape Dataset that also works on Intel® OpenVINO™
