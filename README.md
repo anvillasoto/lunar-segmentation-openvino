@@ -4,7 +4,7 @@
 
 ## Abstract
 
-An implementation of PyTorch's UNet Model for Image Segmentation on Artificial Lunar Landscape Dataset that also works on Intel® OpenVINO™
+An implementation of PyTorch's UNet Model for Image Segmentation and Large Rock Detection on Artificial Lunar Landscape Dataset that also works on Intel® OpenVINO™
 
 
 ## Introduction
@@ -29,10 +29,10 @@ In a research entitled [Robotics and Autonomous System by M.Novara P.Putz L.Mar�
 
 ## Challenges
 - Concept challenges:
-The project we selected is by nature a challenging one. Since the moon terrain data is very difficult to be collected, the concept behind this research project is to use realistic artificial moon landscapes in order to match with the real ones. Aiming to adress this challenge, deep learning and computer vision techniques were employed, in order to help lunar robots on landscape detection. In the current project we used a modified unet to create an edge App with openvino package. The unet model is scripted with pytorch framework.
+The project we selected is by nature a challenging one. Since the moon terrain data is very difficult to be collected, the concept behind this research project is to use realistic artificial moon landscapes in order to match with the real ones. Aiming to address this challenge, deep learning and computer vision techniques were employed, in order to help lunar robots on landscape detection. In the current project we used a modified unet to create an edge App with openvino package. The unet model is scripted with pytorch framework.
 
 - Technical challeges:
-One important technical challenge we had to adress, was the indirect compatibility between pytorch and OpenVINO package. The steps that we followed include the creation of the model using Pytorch, then the model is exported in ONNX format. Finally, a conversion of the ONNX model to OpenVINO, using Model Optimizer, is necessary. 
+One important technical challenge we had to address, was the indirect compatibility between pytorch and OpenVINO package. The steps that we followed include the creation of the model using Pytorch, then the model is exported in ONNX format. Finally, a conversion of the ONNX model to OpenVINO, using Model Optimizer, is necessary. 
 
 ### How difficult it is to collect moon terrain data
 
@@ -41,14 +41,6 @@ As already mentioned, the lunar project, entails many difficulties. One of them 
 Deep learning and computer vision problems always rely on [vast amounts of data](https://www.ibm.com/topics/computer-vision) in order for the resulting models to be accurate. That is, in an acceptable degree of accuracy, resulting models capture the essence of what they represent or trying to solve. In our case, we want to have a feasible image segmentation model that can be applied to various use cases particularly in the creation of object detection or bounding box model to locate large boulders in real time fashion. In our case, only agencies like NASA are able to collect these sets of data like this dataset entitled [High-resolution Lunar Topography](https://pgda.gsfc.nasa.gov/products/54). Oftentimes, due to [limitations of the sensors and communication systems installed on these rovers](https://www.nasa.gov/mission_pages/LRO/news/LRO_twta.html) that capture significant amount terrain data and send lunar data periodically, data of interest is difficult to collect. 
 
 Fortunately, there exists one labelled dataset of lunar landscape images that could be used for our purpose of employing machine learning approach to object detection or segmentation (see the dataset section of this document for more information about the dataset).
-
-
-
-## Unet Topology
-As mentioned above, in the current projectm, we used Unet Topology. Olaf Ronneberger et al. developed this model for Bio Medical Image Segmentation. The model's architecture is divided in two sections. The utility of the first part, also known as the contraction path (encoder), is to capture the context in the image. The encoder consists of convolutional and max poolong layers. The second part, also known as the decoder is responsible for the precise localization , with the use of transposed convolutions. It is a fully convolutional network, which consists of convolutional layers, without any dense layer, which enables it to accept images of any size. Upsampling operators that replace pooling operations, increase the resolution of the output. The prediction of the pixels in the border region of the image, is achived by extrapolating the missing context, by mirroring the input image. This tiling strategy enables the application of the network to large images, since otherwise the resolution would be limited by the GPU memory.
-
-![unet topology-paper](https://github.com/geochri/lunar-segmentation-openvino/blob/master/unet_topology.png)
-
 
 #### Semantic Segmentation
 The objective of Semantic image Segmentation is to classify each pixel of an image, based on what it represents. This procedure is repeated and applied in every single pixel of an image, thus this task is also known as dense prediction. Contrary to other techniques, like image classification, classification with localization and object detection, semantic segmentation provides a high resolution image, of the same size as the input image, where each picture corresponds to a specific class. Therefore, in semantic segmentation the output is not labels and box parameters, but a pixel by pixel classification.
@@ -61,8 +53,16 @@ Some applications of Semantic Segmentation can be summarized as follows:
 - Geo Sensing
 - Precision Agriculture
 
+## Unet Topology
+As mentioned above, in the current project, we used Unet Topology for Semantic Segmentation. Olaf Ronneberger et al. developed this model for Bio Medical Image Segmentation. The model's architecture is divided in two sections. The utility of the first part, also known as the contraction path (encoder), is to capture the context in the image. The encoder consists of convolutional and max poolong layers. The second part, also known as the decoder is responsible for the precise localization , with the use of transposed convolutions. It is a fully convolutional network, which consists of convolutional layers, without any dense layer, which enables it to accept images of any size. Upsampling operators that replace pooling operations, increase the resolution of the output. The prediction of the pixels in the border region of the image, is achived by extrapolating the missing context, by mirroring the input image. This tiling strategy enables the application of the network to large images, since otherwise the resolution would be limited by the GPU memory.
+
+![unet topology-paper](https://github.com/geochri/lunar-segmentation-openvino/blob/master/unet_topology.png)
+
 #### Why Unet
 There are several advantages in using U-net for our project. First of all, considering the limited dataset sample we were dealing with, U-net provided the optimal results, as it has been tested as a segmentation tool in projects with small datasets, e.g. less than 50 training samples. Second, an also important feature of U-net is that it can be used with large images datasets, as it does not have any fully connected layers. Owing to this characteristic, features from images with different sizes, can be extracted. Summing the above benefits and considering the limitations we faced with our dataset, U-net was selected as the ideal segmentation tool for our lunar project.
+
+
+
 
 ### How to make these models usable
 
