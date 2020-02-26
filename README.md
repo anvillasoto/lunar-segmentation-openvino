@@ -85,7 +85,7 @@ ResNet which is short for Residual Network. is a type of specialized neural netw
 
 - Won the 1st place in ILSVRC and COCO 2015 competition in ImageNet Detection, ImageNet localization, Coco detection and Coco segmentation.
 
-- Another important part of choosing this model is the energy efficiency factor. This factor with the combination of robot hardware is the most crucial part since the robot is using solar panels and batteries to be operational. Also if we combination of the  model's energy efficiency factor with the Movidius Neural Compute Stick(2) energy efficiency factor we can have operations lower than 1.5 Watts.
+- Another important part of choosing this model is the energy efficiency factor. This factor with the combination of robot hardware is the most crucial part since the robot is using solar panels and batteries to be operational. Also with the combination of the  model's energy efficiency factor with the Movidius Neural Compute Stick(2) energy efficiency factor we can have operations lower than 1.5 Watts.
 
 The Myriad X is power efficient using just about 1.5 Watts, but it can still process up to 4 trillion operations per second. It has 16 vector processors optimized for image processing pipelines and computer vision workloads.
 
