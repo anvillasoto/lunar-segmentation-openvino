@@ -139,7 +139,7 @@ This is beneficial for our purpose since our model which was written using PyTor
 ![Segmentation Demo](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/demo.gif)
 
 
-[Segmentation Demo-Video](https://github.com/anvillasoto/lunar-segmentation-openvino/blob/master/video/demo.mp4)
+[Segmentation Demo-Video](https://github.com/geochri/lunar-segmentation-openvino/blob/master/video/demo.mp4)
 
 ### Large Rock Detection Results
 ![Large Rock1](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/1large_rock.png)
