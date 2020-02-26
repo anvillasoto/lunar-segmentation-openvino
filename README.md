@@ -78,7 +78,17 @@ As earlier mentioned, detecting large rocks in planetary images is crucial for p
 
 ResNet which is short for Residual Network. is a type of specialized neural network that is well suited for sophisticated deep learning tasks. It has led to many break throughs in image classification and has received growing attention for its effectiveness for training deep networks. ResNet-34 is a 34 layer deep convolutional neural network that is pretrained on the ImageNet database which contains more the one million images. ResNet makes use of "skip connections" which are used to allow gradients to flow through a network directly, without passing through non-linear activation functions. This is a very important characteristic of this network, as it overcomes some problems of other deep neural networks like "vanishing gradient" problem which occurs when gradients become too small to be immediately useful. In addition, it prevents overfitting, where models learn intricate details from training data that prevent them from generalizing enough unseen data. By utilizing deep residual learning frameworks, we could harness the power of deep networks and minimize the weaknesses.
 
-<img src="https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/resnet34_2.png" alt="resnet34"/>
+<img src="https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/resnet34.png" alt="resnet34"/>
+
+#### Why ResNet
+- Won 1st place in the ILSVRC 2015 classification competition with top-5 error rate of 3.57% (An ensemble model)
+
+- Won the 1st place in ILSVRC and COCO 2015 competition in ImageNet Detection, ImageNet localization, Coco detection and Coco segmentation.
+
+- Another important factor for choosing this model is the energy efficiency factor. This factor with the combination of robot hardware is the most crucial part since the robot is using solar panels and batteries to be operational. Also with the combination of the  model's energy efficiency factor and the Movidius Neural Compute Stick(2) energy efficiency factor we can have operations lower than 1.5 Watts.
+
+The Myriad X is power efficient using just about 1.5 Watts, but it can still process up to 4 trillion operations per second. It has 16 vector processors optimized for image processing pipelines and computer vision workloads.
+
 
 ### Challenges In Large Rock Detection
 
@@ -129,13 +139,18 @@ This is beneficial for our purpose since our model which was written using PyTor
 ![Segmentation Demo](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/demo.gif)
 
 
-[Segmentation Demo-Video](https://github.com/anvillasoto/lunar-segmentation-openvino/blob/master/images/demo.mp4)
+[Segmentation Demo-Video](https://github.com/geochri/lunar-segmentation-openvino/blob/master/video/demo.mp4)
 
 ### Large Rock Detection Results
-![Large Rock1](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/large_rock1.png)
-![Large Rock2](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/large_rock2.png)
-![Large Rock3](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/large_rock3.png)
+![Large Rock1](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/1large_rock.png)
+![Large Rock2](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/2large_rock.png)
 
+![Large Rock3](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/3large_rock.png)
+![Large Rock4](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/large_rock4.png)
+
+
+The figure below shows the training and validation loss.
+![Loss](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/loss.png)
 
 
 ## Further work
