@@ -136,6 +136,8 @@ This is beneficial for our purpose since our model which was written using PyTor
 ![Large Rock2](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/2large_rock.png)
 ![Large Rock3](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/3large_rock.png)
 
+The figure below shows the training and validation loss.
+![Loss](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/loss.png)
 
 
 ## Further work
