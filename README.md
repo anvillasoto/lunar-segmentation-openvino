@@ -78,7 +78,7 @@ As earlier mentioned, detecting large rocks in planetary images is crucial for p
 
 ResNet which is short for Residual Network. is a type of specialized neural network that is well suited for sophisticated deep learning tasks. It has led to many break throughs in image classification and has received growing attention for its effectiveness for training deep networks. ResNet-34 is a 34 layer deep convolutional neural network that is pretrained on the ImageNet database which contains more the one million images. ResNet makes use of "skip connections" which are used to allow gradients to flow through a network directly, without passing through non-linear activation functions. This is a very important characteristic of this network, as it overcomes some problems of other deep neural networks like "vanishing gradient" problem which occurs when gradients become too small to be immediately useful. In addition, it prevents overfitting, where models learn intricate details from training data that prevent them from generalizing enough unseen data. By utilizing deep residual learning frameworks, we could harness the power of deep networks and minimize the weaknesses.
 
-![resnet34](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/resnet34.png)
+<img src="https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/resnet34.png" alt="resnet34" width="250"/>
 
 ### Challenges In Large Rock Detection
 
