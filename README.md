@@ -144,6 +144,7 @@ This is beneficial for our purpose since our model which was written using PyTor
 ### Large Rock Detection Results
 ![Large Rock1](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/1large_rock.png)
 ![Large Rock2](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/2large_rock.png)
+
 ![Large Rock3](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/3large_rock.png)
 ![Large Rock4](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/large_rock4.png)
 
