@@ -84,7 +84,7 @@ ResNet which is short for Residual Network. is a type of specialized neural netw
 Training the model to get good results was a tough assignment as we could not get very accurate results. Subject to the fact that rocks do not have a uniform morphology, color, texture, shape and have no uniform property to distinguish them from background soil, it can be understood that rocks in planetary images are poorly suited for visual detection techniques. The problem becomes even more challenging when the planetary images are taken under different illumination conditions, viewing angles and so on. Furthermore, rocks can look blurred from a distance or partially embedded in the terrain because they are covered by dust and/or can occlude (hide) each other [1]
 
 
-### How to make these models usable
+## How to make these models usable
 
 Especially when we want to use the model locally on lunar rovers, it is obviously infeasible to run predictions to the cloud and get back to the rover. That is why real-time processing is necessary for applications such as these. In our case, our model must be accurate and fast enough to spit out predictions locally. Not to mention the issue of [energy efficiency](https://www.researchgate.net/publication/332463258_Low-Power_Computer_Vision_Status_Challenges_Opportunities) when it comes to building a pipelined approach in realizing these powerful systems. 
 
