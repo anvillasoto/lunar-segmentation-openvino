@@ -1,6 +1,6 @@
 # Image Segmentation on Artificial Lunar Landscape Dataset
 
-<img src="https://github.com/geochri/lunar-segmentation-openvino/blob/master/logo_lunarX.png" alt="logo" width="550"/>
+<img src="https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/logo_lunarX.png" alt="logo" width="550"/>
 
 ## Abstract
 
@@ -66,7 +66,7 @@ Some applications of Semantic Segmentation can be summarized as follows:
 ### Unet Topology
 As mentioned above, in the current project, we used Unet Topology for Semantic Segmentation. Olaf Ronneberger et al. developed this model for Bio Medical Image Segmentation. The model's architecture is divided in two sections. The utility of the first part, also known as the contraction path (encoder), is to capture the context in the image. The encoder consists of convolutional and max poolong layers. The second part, also known as the decoder is responsible for the precise localization , with the use of transposed convolutions. It is a fully convolutional network, which consists of convolutional layers, without any dense layer, which enables it to accept images of any size. Upsampling operators that replace pooling operations, increase the resolution of the output. The prediction of the pixels in the border region of the image, is achived by extrapolating the missing context, by mirroring the input image. This tiling strategy enables the application of the network to large images, since otherwise the resolution would be limited by the GPU memory.
 
-![unet topology-paper](https://github.com/geochri/lunar-segmentation-openvino/blob/master/unet_topology.png)
+![unet topology-paper](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/unet_topology.png)
 
 #### Why Unet
 There are several advantages in using U-net for our project. First of all, considering the limited dataset sample we were dealing with, U-net provided the optimal results, as it has been tested as a segmentation tool in projects with small datasets, e.g. less than 50 training samples. Second, an also important feature of U-net is that it can be used with large images datasets, as it does not have any fully connected layers. Owing to this characteristic, features from images with different sizes, can be extracted. Summing the above benefits and considering the limitations we faced with our dataset, U-net was selected as the ideal segmentation tool for our lunar project.
@@ -101,34 +101,34 @@ This is beneficial for our purpose since our model which was written using PyTor
 
 ### Segmentation Results
 #### Untrained model
-![Input Image](https://github.com/geochri/lunar-segmentation-openvino/blob/master/art_realistic_moon3.png)
-![Untrained result](https://github.com/geochri/lunar-segmentation-openvino/blob/master/art_realistic_moon3_untrained_model.png)
+![Input Image](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/art_realistic_moon3.png)
+![Untrained result](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/art_realistic_moon3_untrained_model.png)
 
 #### Results after training
 ##### Example1 - input/ground truth/prediction
-![Input Image1](https://github.com/geochri/lunar-segmentation-openvino/blob/master/art_realistic_moon.png)
-![Ground truth1](https://github.com/geochri/lunar-segmentation-openvino/blob/master/art_realistic_moon_ground_truth.png)
-![Prediction image1](https://github.com/geochri/lunar-segmentation-openvino/blob/master/art_realistic_moon_prediction.png)
+![Input Image1](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/art_realistic_moon.png)
+![Ground truth1](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/art_realistic_moon_ground_truth.png)
+![Prediction image1](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/art_realistic_moon_prediction.png)
 ##### Example2 - input/ground truth/prediction
-![Input Image2](https://github.com/geochri/lunar-segmentation-openvino/blob/master/art_realistic_moon2.png)
-![Ground truth2](https://github.com/geochri/lunar-segmentation-openvino/blob/master/art_realistic_moon_ground_truth2.png)
-![Prediction image2](https://github.com/geochri/lunar-segmentation-openvino/blob/master/art_realistic_moon_prediction2.png)
+![Input Image2](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/art_realistic_moon2.png)
+![Ground truth2](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/art_realistic_moon_ground_truth2.png)
+![Prediction image2](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/art_realistic_moon_prediction2.png)
 ##### Example3 - input/ground truth/prediction
-![Input Image3](https://github.com/geochri/lunar-segmentation-openvino/blob/master/lunar_rock_segmentationV4_local_train.jpg)
-![Ground truth3](https://github.com/geochri/lunar-segmentation-openvino/blob/master/lunar_rock_segmentationV4_local_mask.jpg)
-![Prediction image3](https://github.com/geochri/lunar-segmentation-openvino/blob/master/lunar_rock_segmentationV4_local_pred.jpg)
+![Input Image3](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/lunar_rock_segmentationV4_local_train.png)
+![Ground truth3](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/lunar_rock_segmentationV4_local_mask.png)
+![Prediction image3](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/lunar_rock_segmentationV4_local_pred.png)
 
 ##### Real moon prediction - input/prediction
-![Input Image2](https://github.com/geochri/lunar-segmentation-openvino/blob/master/real_moon.png)
-![Prediction image2](https://github.com/geochri/lunar-segmentation-openvino/blob/master/prediction_real_moon.png)
+![Input Image2](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/real_moon.png)
+![Prediction image2](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/prediction_real_moon.png)
 
 
 
 ### Openvino Video presentation
-![Segmentation Demo](https://github.com/geochri/lunar-segmentation-openvino/blob/master/demo.gif)
+![Segmentation Demo](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/demo.gif)
 
 
-[Segmentation Demo-Video](https://github.com/anvillasoto/lunar-segmentation-openvino/blob/master/demo.mp4)
+[Segmentation Demo-Video](https://github.com/anvillasoto/lunar-segmentation-openvino/blob/master/images/demo.mp4)
 
 ### Large Rock Detection Results
 
