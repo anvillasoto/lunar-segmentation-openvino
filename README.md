@@ -1,4 +1,4 @@
-# Image Segmentation on Artificial Lunar Landscape Dataset
+# Image Segmentation and Large Rock Detection on Artificial Lunar Landscape Dataset
 
 <img src="https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/logo_lunarX.png" alt="logo" width="550"/>
 
