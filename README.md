@@ -200,7 +200,7 @@ The figure below shows the training and validation loss.
 
 
 ## Further work
-We will implementing and testing more segmentation models like ENet and ICNet on openvino.
+We will implementing and testing more segmentation models such as ENet and ICNet on openvino.
 
 
 ## References
