@@ -255,6 +255,14 @@ The figure below shows the training and validation loss.
 ## Further work
 We will implementing and testing more segmentation models such as ENet and ICNet on openvino.
 
+## Contributors
+
+George Christopoulos - https://github.com/geochri
+Alexander Villasoto  - https://github.com/anvillasoto
+Ayivima              - https://github.com/ayivima
+Ivy                  - https://github.com/ivyclare
+Zik                  - https://github.com/dimejimudele
+
 
 ## References
 1) Thompson, D. R., Castano, R., 2007. Performance Comparison of Rock Detection Algorithms for Autonomous Planetary Geology. Aerospace, IEEE, USA, IEEEAC Paper No.1251
