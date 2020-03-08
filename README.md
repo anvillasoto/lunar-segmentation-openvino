@@ -72,10 +72,13 @@ As mentioned above, in the current project, we used Unet Topology for Semantic S
 #### Why Unet
 There are several advantages in using U-net for our project. First of all, considering the limited dataset sample we were dealing with, U-net provided the optimal results, as it has been tested as a segmentation tool in projects with small datasets, e.g. less than 50 training samples. Second, an also important feature of U-net is that it can be used with large images datasets, as it does not have any fully connected layers. Owing to this characteristic, features from images with different sizes, can be extracted. Summing the above benefits and considering the limitations we faced with our dataset, U-net was selected as the ideal segmentation tool for our lunar project.
 
-### ResNet50 - Unet
+#### ResNet50 - Unet
 
 
 ### SegNet Topology
+
+
+### Why Segnet
 
 
 ## Large Rock Detection
