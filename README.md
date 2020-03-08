@@ -258,9 +258,13 @@ We will implementing and testing more segmentation models such as ENet and ICNet
 ## Contributors
 
 George Christopoulos - https://github.com/geochri
+
 Alexander Villasoto  - https://github.com/anvillasoto
+
 Ayivima              - https://github.com/ayivima
+
 Ivy                  - https://github.com/ivyclare
+
 Zik                  - https://github.com/dimejimudele
 
 
