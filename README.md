@@ -115,7 +115,7 @@ ResNet-34 is a 34 layer deep convolutional neural network that is pretrained on 
 ##### ResNet-50
 ResNet-50 is a 50 layer deep convolutional neural network that is pretrained on the ImageNet database which contains more the one million images. Each ResNet block in this topology is 3-layers deep. It is has been shown to provide better results than ResNet34 but comes with more computational burden due to the extra layers and parameters.
 
-![ResNet-50](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/resnet50.png)*ResNet-50 topology. Source: https://roamerworld.blogspot.com/2019/05/resnet50-architecture-for-deep-learning_24.html*
+![ResNet-50](./images/resnet50.png)*ResNet-50 topology. Source: https://roamerworld.blogspot.com/2019/05/resnet50-architecture-for-deep-learning_24.html*
 
 ## U-Net 
 #### Why U-Net
