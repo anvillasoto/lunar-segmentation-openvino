@@ -6,7 +6,7 @@
 
 On the lunar surface  a variety of different objects can be identified, including  rocks, mountains, boulders, slopes and mainly craters. Many studies have been conducted  in enriching our knowledge about the Moon and its surface. From the above mentionned characterstics of a lunar surface, large size rocks are an important threat for autonomous vehicles.
 
-Therefore, the identification of large rocks on the lunar surface can contribute to a safer navigation for autonomus vehicles used for the lunar surface exploration. The objective of this project is the implementation of PyTorch's UNet Model for Image Segmentation and Large Rock Detection on Artificial Lunar Landscape Dataset that is compatible with Intel® OpenVINO™
+Therefore, the identification of large rocks on the lunar surface can contribute to a safer navigation for autonomus vehicles used for the lunar surface exploration. The objective of this project is the implementation of PyTorch's UNet Model and SegNet Model for Image Segmentation and Large Rock Detection on Artificial Lunar Landscape Dataset that is compatible with Intel® OpenVINO™
 
 ## Introduction
 
@@ -107,6 +107,8 @@ ResNet which is short for Residual Network is a type of specialized neural netwo
 
 The Myriad X is power efficient using just about 1.5 Watts, but it can still process up to 4 trillion operations per second. It has 16 vector processors optimized for image processing pipelines and computer vision workloads.
 
+
+
 ##### ResNet-34
 ResNet-34 is a 34 layer deep convolutional neural network that is pretrained on the ImageNet database which contains more the one million images. Each ResNet block in this topology is 2-layers deep.
 
@@ -130,11 +132,30 @@ As mentioned above, in the current project, we used U-Net Topology for Semantic 
 
 
 ## SegNet
-#### Why SegNet
+
 
 #### SegNet Topology
+SegNet is a deep encoder-decoder architecture for multi-class pixelwise segmentation researched and developed by members of the Computer Vision and Robotics Group at the University of Cambridge, UK.
+
+The selection of SegNET topology was based on the encoder network, which is identical to the convolutional layers in VGG16. This type of encoder is smaller and easier to train compared to other architectures, as the fully connected layers of VGG16 are removed. The main characteristic of SegNet is the decoder network, which consists of an hierarchy of decoders one corresponding to each encoder. 
+
+Of these, the appropriate decoders use the max-pooling indices received from the corresponding encoder to perform non-linear upsampling of their input feature maps. This has the important advantages of retaining high frequency details in the segmented images and also reducing the total number of trainable parameters in the decoders. The entire architecture can be trained end-to-end using stochastic gradient descent. The raw SegNet predictions tend to be smooth even without a CRF based post-processing [2].
+
+The advantages of re-using max-pooling indices in the decoding process can be summarized as follows:
+1. Boundary delineation is improved
+2. It reduces the number of parameters enabling end-to-end training
+
+![segnet_topology](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/segnet_topology.png)
 
 
+#### Why SegNet
+
+From a computational perspective, it is necessary for the network to be efficient in terms of both memory and computation time during inference. The selection of SegNet initially was based on the low memory requirement during both training and testing, as well as the high FPS. Another advantage is the size of the model, which is significantly smaller that FCN and DeconvNet. Segmentation resolution is improved by transferring maxpooling indices to decoder. Also, the fully connected layers can be discarded in favour of retaining higher resolution feature maps at the deepest encoder output, a fact that reduces the number of parameters in the SegNet encoder network significantly (from 134M to 14.7M) as compared to other architectures [2].
+
+One difference between SegNet and U-Net, is that the latter does not reuse pooling indices but instead transfers the entire feature map (at the cost of more memory) to the corresponding decoders and concatenates them to upsampled (via deconvolution) decoder feature maps. U-Net has no conv5 and max-pool 5 block, as in the VGG net architecture. SegNet, on the other hand, uses all of the pre-trained convolutional layer weights from VGG net as pre-trained weights. U-Net, which is widely used in biomedical image segmentation, instead of using pooling indices, the entire feature maps are transfer from encoder to decoder, then with concatenation to perform convolution.
+This procedure makes the model larger and more memory is required.
+
+![segnet_hard_perf](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/segnet_hardware_perf.png)
 
 ## The novelty of our project: How to make these models usable
 
@@ -237,3 +258,5 @@ We will implementing and testing more segmentation models such as ENet and ICNet
 
 ## References
 1) Thompson, D. R., Castano, R., 2007. Performance Comparison of Rock Detection Algorithms for Autonomous Planetary Geology. Aerospace, IEEE, USA, IEEEAC Paper No.1251
+
+2) V. Badrinarayanan, A. Kendall and R. Cipolla, "SegNet: A Deep Convolutional Encoder-Decoder Architecture for Image Segmentation," in IEEE Transactions on Pattern Analysis and Machine Intelligence, vol. 39, no. 12, pp. 2481-2495, 1 Dec. 2017. URL: https://arxiv.org/pdf/1511.00561.pdf
