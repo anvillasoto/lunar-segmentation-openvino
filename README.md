@@ -173,7 +173,7 @@ This is beneficial for our purpose since our model which was written using PyTor
 ![Ground truth2](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/lunar_rock_segmentationV4_local_segnet_soft_dice_mask.jpg)
 ![Prediction image2](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/lunar_rock_segmentationV4_local_segnet_soft_dice_pred2.jpg)
 
-##### Real moon prediction - input/prediction
+#### Real moon prediction - input/prediction
 ##### Example1 - input/ground truth/prediction
 ![Input Image1](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/real_moon.png)
 ![Prediction image1](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/lunar_rock_segmentationV4_local_segnet_pred-REAL1.jpg)
