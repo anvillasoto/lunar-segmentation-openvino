@@ -76,7 +76,7 @@ The architectures we tested and the design of our experiements are presented in 
 Training the model to get good results was a tough assignment as we could not get very accurate results. Subject to the fact that rocks do not have a uniform morphology, color, texture, shape and have no uniform property to distinguish them from background soil, it can be understood that rocks in planetary images are poorly suited for visual detection techniques. The problem becomes even more challenging when the planetary images are taken under different illumination conditions, viewing angles and so on. Furthermore, rocks can look blurred from a distance or partially embedded in the terrain because they are covered by dust and/or can occlude (hide) each other [1]
 
 ## Experimental Design
-For the modelling task at hand, we experimented with two key approahes.
+For the extraction and segmentation task at hand, we experimented with two key approaches.
 - U-Net with ResNet encoder. For this, experimented with both ResNet-34 and ResNet-50 as encoder.
 - SegNet.
 We trained  models with Negative Log-Likelihood loss function for all experiments conducted  and also compared their performances using the Dice loss (defined in code below). We used used Stochastic Gradient Descent optimizer with parameters: learning rate = `0.01`, momentum = `0.9`, weight decay = `0.0001`. 
@@ -107,16 +107,19 @@ ResNet which is short for Residual Network is a type of specialized neural netwo
 
 The Myriad X is power efficient using just about 1.5 Watts, but it can still process up to 4 trillion operations per second. It has 16 vector processors optimized for image processing pipelines and computer vision workloads.
 
-##### ResNet 34
+##### ResNet-34
 ResNet-34 is a 34 layer deep convolutional neural network that is pretrained on the ImageNet database which contains more the one million images. Each ResNet block in this topology is 2-layers deep.
 
-##### ResNet 50
-ResNet-50 is a 50 layer deep convolutional neural network that is pretrained on the ImageNet database which contains more the one million images. Each ResNet block in this topology is 3-layers deep. It is has been shown to provide better results than ResNet34 but comes with more computational burden due to the extra layers and parameter.
+![ResNet-34](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/resnet34.png)*ResNet-34 topology*
 
+##### ResNet-50
+ResNet-50 is a 50 layer deep convolutional neural network that is pretrained on the ImageNet database which contains more the one million images. Each ResNet block in this topology is 3-layers deep. It is has been shown to provide better results than ResNet34 but comes with more computational burden due to the extra layers and parameters.
+
+![ResNet-50](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/resnet50.png)*ResNet-50 topology. Source: https://roamerworld.blogspot.com/2019/05/resnet50-architecture-for-deep-learning_24.html*
 
 ## U-Net 
 #### Why U-Net
-There are several advantages in using U-net for our project. First of all, considering the limited dataset sample we were dealing with, U-net provided the optimal results, as it has been tested as a segmentation tool in projects with small datasets, e.g. less than 50 training samples. Second, an also important feature of U-net is that it can be used with large images datasets, as it does not have any fully connected layers. Owing to this characteristic, features from images with different sizes, can be extracted. Summing the above benefits and considering the limitations we faced with our dataset, U-net was selected as the ideal segmentation tool for our lunar project.
+There are several advantages in using U-Net for our project. First of all, considering the limited dataset sample we were dealing with, U-net provided the optimal results, as it has been tested as a segmentation tool in projects with small datasets, e.g. less than 50 training samples. Second, an also important feature of U-net is that it can be used with large images datasets, as it does not have any fully connected layers. Owing to this characteristic, features from images with different sizes, can be extracted. Summing the above benefits and considering the limitations we faced with our dataset, U-net was selected as the ideal segmentation tool for our lunar project.
 
 #### U-Net Topology
 As mentioned above, in the current project, we used U-Net Topology for Semantic Segmentation. Olaf Ronneberger et al. developed this model for Bio Medical Image Segmentation. The model's architecture is divided in two sections. The utility of the first part, also known as the contraction path (encoder), is to capture the context in the image. The encoder consists of convolutional and max poolong layers. The second part, also known as the decoder is responsible for the precise localization , with the use of transposed convolutions. It is a fully convolutional network, which consists of convolutional layers, without any dense layer, which enables it to accept images of any size. Upsampling operators that replace pooling operations, increase the resolution of the output. The prediction of the pixels in the border region of the image, is achived by extrapolating the missing context, by mirroring the input image. This tiling strategy enables the application of the network to large images, since otherwise the resolution would be limited by the GPU memory. To improve the performance of our segmentation model, we used pretrained ResNet for the encoder/down sampling section of the U-Net
