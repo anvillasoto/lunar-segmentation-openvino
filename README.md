@@ -164,9 +164,9 @@ This is beneficial for our purpose since our model which was written using PyTor
 
 ### SegNet
 ##### Example1 - input/ground truth/prediction
-![Input Image1](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/lunar_rock_segmentationv4_local_segnet_train1.png)
-![Ground truth1](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/lunar_rock_segmentationV4_local_segnet_mask.png)
-![Prediction image1](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/lunar_rock_segmentationV4_local_segnet_pred.png)
+![Input Image1](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/lunar_rock_segmentationv4_local_segnet_train1.jpg)
+![Ground truth1](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/lunar_rock_segmentationV4_local_segnet_mask.jpg)
+![Prediction image1](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/lunar_rock_segmentationV4_local_segnet_pred.jpg)
 
 ##### Example2 - input/ground truth/prediction
 ![Input Image2](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/lunar_rock_segmentationV4_local_segnet_soft_dice_train.jpg)
@@ -176,7 +176,7 @@ This is beneficial for our purpose since our model which was written using PyTor
 ##### Real moon prediction - input/prediction
 ##### Example1 - input/ground truth/prediction
 ![Input Image1](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/real_moon.png)
-![Prediction image1](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/lunar_rock_segmentationV4_local_segnet_pred-REAL.jpg)
+![Prediction image1](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/lunar_rock_segmentationV4_local_segnet_pred-REAL1.jpg)
 ##### Example2 - input/ground truth/prediction
 ![Input Image2](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/real_lunar_of_prediction.jpg)
 ![Prediction image2](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/segnet_prediction_real_moon.jpg)
