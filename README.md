@@ -164,22 +164,22 @@ This is beneficial for our purpose since our model which was written using PyTor
 
 ### SegNet
 ##### Example1 - input/ground truth/prediction
-![Input Image1](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/lunar_rock_segmentationV4_local_segnet_soft_dice_train1.png)
+![Input Image1](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/lunar_rock_segmentationv4_local_segnet_train1.png)
 ![Ground truth1](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/lunar_rock_segmentationV4_local_segnet_mask.png)
-![Prediction image1](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/lunar_rock_segmentationV4_local_segnet._pred.png)
+![Prediction image1](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/lunar_rock_segmentationV4_local_segnet_pred.png)
 
 ##### Example2 - input/ground truth/prediction
-![Input Image2](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/lunar_rock_segmentationV4_local_segnet_soft_dice_train.png)
-![Ground truth2](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/lunar_rock_segmentationV4_local_segnet_soft_dice_mask.png)
-![Prediction image2](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/lunar_rock_segmentationV4_local_segnet_soft_dice_pred2.png)
+![Input Image2](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/lunar_rock_segmentationV4_local_segnet_soft_dice_train.jpg)
+![Ground truth2](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/lunar_rock_segmentationV4_local_segnet_soft_dice_mask.jpg)
+![Prediction image2](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/lunar_rock_segmentationV4_local_segnet_soft_dice_pred2.jpg)
 
 ##### Real moon prediction - input/prediction
 ##### Example1 - input/ground truth/prediction
 ![Input Image1](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/real_moon.png)
-![Prediction image1](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/lunar_rock_segmentationV4_local_segnet_pred-REAL1.png)
+![Prediction image1](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/lunar_rock_segmentationV4_local_segnet_pred-REAL.jpg)
 ##### Example2 - input/ground truth/prediction
-![Input Image2](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/real_lunar_of_prediction.png)
-![Prediction image2](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/segnet_prediction_real_moon.png)
+![Input Image2](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/real_lunar_of_prediction.jpg)
+![Prediction image2](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/segnet_prediction_real_moon.jpg)
 
 ### Openvino Video presentation
 ![Segmentation Demo](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/demo.gif)
