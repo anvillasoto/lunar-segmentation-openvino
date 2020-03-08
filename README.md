@@ -252,6 +252,18 @@ The figure below shows the training and validation loss.
 ![Loss](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/loss.png)
 
 
+## KivyApp
+
+The purpose of this KivyApp is to help the users and researchers of the autonomous vehicles, in cases when the robot does not move in an automatic way, but there is a user who controls it. KivyApp can combine the segmentation and rock detection models, providing the user with knowledge of both simultaneously. 
+
+![AppPresentation](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/kivyApp_lunarX.gif)
+
+[AppPresentation_video](https://github.com/geochri/lunar-segmentation-openvino/blob/master/video/kivyApp_lunarX.mp4)
+
+[repo](https://github.com/ayivima/lunarx-kivy)
+
+
+
 ## Further work
 We will implementing and testing more segmentation models such as ENet and ICNet on openvino.
 
