@@ -124,7 +124,7 @@ There are several advantages in using U-Net for our project. First of all, consi
 #### U-Net Topology
 As mentioned above, in the current project, we used U-Net Topology for Semantic Segmentation. Olaf Ronneberger et al. developed this model for Bio Medical Image Segmentation. The model's architecture is divided in two sections. The utility of the first part, also known as the contraction path (encoder), is to capture the context in the image. The encoder consists of convolutional and max poolong layers. The second part, also known as the decoder is responsible for the precise localization , with the use of transposed convolutions. It is a fully convolutional network, which consists of convolutional layers, without any dense layer, which enables it to accept images of any size. Upsampling operators that replace pooling operations, increase the resolution of the output. The prediction of the pixels in the border region of the image, is achived by extrapolating the missing context, by mirroring the input image. This tiling strategy enables the application of the network to large images, since otherwise the resolution would be limited by the GPU memory. To improve the performance of our segmentation model, we used pretrained ResNet for the encoder/down sampling section of the U-Net
 
-![U-Net topology-paper](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/unet_topology.png)
+![U-Net topology-paper](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/unet_topology.png)*U-Net Topology*
 
 
 
