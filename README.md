@@ -64,55 +64,84 @@ Some applications of Semantic Segmentation can be summarized as follows:
 - Geo Sensing
 - Precision Agriculture
 
-### Unet Topology
-As mentioned above, in the current project, we used Unet Topology for Semantic Segmentation. Olaf Ronneberger et al. developed this model for Bio Medical Image Segmentation. The model's architecture is divided in two sections. The utility of the first part, also known as the contraction path (encoder), is to capture the context in the image. The encoder consists of convolutional and max poolong layers. The second part, also known as the decoder is responsible for the precise localization , with the use of transposed convolutions. It is a fully convolutional network, which consists of convolutional layers, without any dense layer, which enables it to accept images of any size. Upsampling operators that replace pooling operations, increase the resolution of the output. The prediction of the pixels in the border region of the image, is achived by extrapolating the missing context, by mirroring the input image. This tiling strategy enables the application of the network to large images, since otherwise the resolution would be limited by the GPU memory.
-
-![unet topology-paper](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/unet_topology.png)
-
-#### Why Unet
-There are several advantages in using U-net for our project. First of all, considering the limited dataset sample we were dealing with, U-net provided the optimal results, as it has been tested as a segmentation tool in projects with small datasets, e.g. less than 50 training samples. Second, an also important feature of U-net is that it can be used with large images datasets, as it does not have any fully connected layers. Owing to this characteristic, features from images with different sizes, can be extracted. Summing the above benefits and considering the limitations we faced with our dataset, U-net was selected as the ideal segmentation tool for our lunar project.
-
-#### ResNet50 - Unet
-
-
-### SegNet Topology
-
-
-### Why Segnet
-
-
 ## Large Rock Detection
-As earlier mentioned, detecting large rocks in planetary images is crucial for planetary scientist and Geologists. Generally, identifying rocks in images of planetary surfaces is a very challenging task, mostly because rocks exhibit diverse morphologies, textures, colors, shape and other attributes that can be used to differentiate rocks from other features. In order, to solve this problem, we have tried several deep neural network architectures before settling down with ResNet34. The choice is of this network was based primarily on the model performance, hardware restrictions and the time taken for training. 
- 
-### ResNet34
+Detecting large rocks in planetary images is crucial for planetary scientist and Geologists. 
+Generally, identifying rocks in images of planetary surfaces is a very challenging task, 
+mostly because rocks exhibit diverse morphologies, textures, colors, shape and other attributes that can be used to 
+differentiate rocks from other features. In order, to solve this problem, we have tried several deep neural network architectures.
+The architectures we tested and the design of our experiements are presented in the next section. 
 
-ResNet which is short for Residual Network. is a type of specialized neural network that is well suited for sophisticated deep learning tasks. It has led to many break throughs in image classification and has received growing attention for its effectiveness for training deep networks. ResNet-34 is a 34 layer deep convolutional neural network that is pretrained on the ImageNet database which contains more the one million images. ResNet makes use of "skip connections" which are used to allow gradients to flow through a network directly, without passing through non-linear activation functions. This is a very important characteristic of this network, as it overcomes some problems of other deep neural networks like "vanishing gradient" problem which occurs when gradients become too small to be immediately useful. In addition, it prevents overfitting, where models learn intricate details from training data that prevent them from generalizing enough unseen data. By utilizing deep residual learning frameworks, we could harness the power of deep networks and minimize the weaknesses.
-
-<img src="https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/resnet34.png" alt="resnet34"/>
-
-
-
-
-#### Why ResNet
-- Won 1st place in the ILSVRC 2015 classification competition with top-5 error rate of 3.57% (An ensemble model)
-
-- Won the 1st place in ILSVRC and COCO 2015 competition in ImageNet Detection, ImageNet localization, Coco detection and Coco segmentation.
-
-- Another important factor for choosing this model is the energy efficiency factor. This factor with the combination of robot hardware is the most crucial part since the robot is using solar panels and batteries to be operational. Also with the combination of the  model's energy efficiency factor and the Movidius Neural Compute Stick(2) energy efficiency factor we can have operations lower than 1.5 Watts.
-
-The Myriad X is power efficient using just about 1.5 Watts, but it can still process up to 4 trillion operations per second. It has 16 vector processors optimized for image processing pipelines and computer vision workloads.
-
-
-### Challenges In Large Rock Detection
+## Challenges In Large Rock Detection
 
 Training the model to get good results was a tough assignment as we could not get very accurate results. Subject to the fact that rocks do not have a uniform morphology, color, texture, shape and have no uniform property to distinguish them from background soil, it can be understood that rocks in planetary images are poorly suited for visual detection techniques. The problem becomes even more challenging when the planetary images are taken under different illumination conditions, viewing angles and so on. Furthermore, rocks can look blurred from a distance or partially embedded in the terrain because they are covered by dust and/or can occlude (hide) each other [1]
 
+## Experimental Design
+For the extraction and segmentation task at hand, we experimented with two key approaches.
+- U-Net with ResNet encoder. For this, experimented with both ResNet-34 and ResNet-50 as encoder.
+- SegNet.
+We trained  models with Negative Log-Likelihood loss function for all experiments conducted  and also compared their performances using the Dice loss (defined in code below). We used used Stochastic Gradient Descent optimizer with parameters: learning rate = `0.01`, momentum = `0.9`, weight decay = `0.0001`. 
 
-### How to make these models usable
+```
+def dice_loss(inputs, labels):
+    inputs = torch.argmax(inputs, dim=1, keepdim = True)
+    inputs = inputs.squeeze(1)
+    labels = labels.squeeze(1)
+    intersection = (inputs.view(-1).float() == labels.view(-1).float())
+    sum_int = intersection.sum().float()
+
+    inp_flats = inputs.view(-1).float()
+    lab_flats = labels.view(-1).float()    
+
+    d_loss = (2 * sum_int/(len(inp_flats) + len(lab_flats)))
+    return d_loss
+```
+We introduce all model architectures used in the immediate following sections below.
+
+## ResNet
+ResNet which is short for Residual Network is a type of specialized neural network that is well suited for sophisticated deep learning tasks. It has led to many break throughs in image classification and has received growing attention for its effectiveness for training deep networks. ResNet makes use of "skip connections" which are used to allow gradients to flow through a network directly, without passing through non-linear activation functions. This is a very important characteristic of this network, as it overcomes some problems of other deep neural networks like "vanishing gradient" problem which occurs when gradients become too small to be immediately useful. In addition, it prevents overfitting, where models learn intricate details from training data that prevent them from generalizing enough unseen data. By utilizing deep residual learning frameworks, we could harness the power of deep networks and minimize the weaknesses.
+
+#### Why ResNet
+- Won 1st place in the ILSVRC 2015 classification competition with top-5 error rate of 3.57% (An ensemble model)
+- Won the 1st place in ILSVRC and COCO 2015 competition in ImageNet Detection, ImageNet localization, Coco detection and Coco segmentation.
+- Another important factor for choosing this model is the energy efficiency factor. This factor with the combination of robot hardware is the most crucial part since the robot is using solar panels and batteries to be operational. Also with the combination of the model's energy efficiency factor and the Movidius Neural Compute Stick(2) energy efficiency factor we can have operations lower than 1.5 Watts.
+
+The Myriad X is power efficient using just about 1.5 Watts, but it can still process up to 4 trillion operations per second. It has 16 vector processors optimized for image processing pipelines and computer vision workloads.
+
+##### ResNet-34
+ResNet-34 is a 34 layer deep convolutional neural network that is pretrained on the ImageNet database which contains more the one million images. Each ResNet block in this topology is 2-layers deep.
+
+![ResNet-34](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/resnet34.png)*ResNet-34 topology*
+
+##### ResNet-50
+ResNet-50 is a 50 layer deep convolutional neural network that is pretrained on the ImageNet database which contains more the one million images. Each ResNet block in this topology is 3-layers deep. It is has been shown to provide better results than ResNet34 but comes with more computational burden due to the extra layers and parameters.
+
+![ResNet-50](./images/resnet50.png)*ResNet-50 topology. Source: https://roamerworld.blogspot.com/2019/05/resnet50-architecture-for-deep-learning_24.html*
+
+## U-Net 
+#### Why U-Net
+There are several advantages in using U-Net for our project. First of all, considering the limited dataset sample we were dealing with, U-net provided the optimal results, as it has been tested as a segmentation tool in projects with small datasets, e.g. less than 50 training samples. Second, an also important feature of U-net is that it can be used with large images datasets, as it does not have any fully connected layers. Owing to this characteristic, features from images with different sizes, can be extracted. Summing the above benefits and considering the limitations we faced with our dataset, U-net was selected as the ideal segmentation tool for our lunar project.
+
+#### U-Net Topology
+As mentioned above, in the current project, we used U-Net Topology for Semantic Segmentation. Olaf Ronneberger et al. developed this model for Bio Medical Image Segmentation. The model's architecture is divided in two sections. The utility of the first part, also known as the contraction path (encoder), is to capture the context in the image. The encoder consists of convolutional and max poolong layers. The second part, also known as the decoder is responsible for the precise localization , with the use of transposed convolutions. It is a fully convolutional network, which consists of convolutional layers, without any dense layer, which enables it to accept images of any size. Upsampling operators that replace pooling operations, increase the resolution of the output. The prediction of the pixels in the border region of the image, is achived by extrapolating the missing context, by mirroring the input image. This tiling strategy enables the application of the network to large images, since otherwise the resolution would be limited by the GPU memory. To improve the performance of our segmentation model, we used pretrained ResNet for the encoder/down sampling section of the U-Net
+
+![U-Net topology-paper](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/unet_topology.png)*U-Net Topology*
+
+
+
+
+## SegNet
+#### Why SegNet
+
+#### SegNet Topology
+
+
+
+## The novelty of our project: How to make these models usable
 
 Especially when we want to use the model locally on lunar rovers, it is obviously infeasible to run predictions to the cloud and get back to the rover. That is why real-time processing is necessary for applications such as these. In our case, our model must be accurate and fast enough to spit out predictions locally. Not to mention the issue of [energy efficiency](https://www.researchgate.net/publication/332463258_Low-Power_Computer_Vision_Status_Challenges_Opportunities) when it comes to building a pipelined approach in realizing these powerful systems. 
 
 To overcome these challenges, we need to have a toolkit that solves these problems while also proactively support frameworks that produces state-of-the-art segmentation models that fit our purpose. 
+
 
 ## AI at the Edge and The Intel® OpenVINO™ Toolkit
 
@@ -125,13 +154,13 @@ This is beneficial for our purpose since our model which was written using PyTor
 
 ### Segmentation Results
 
-### Unet-Resnet18
+### U-Net-ResNet18
 #### Untrained model
 ![Input Image](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/art_realistic_moon3.png)
 ![Untrained result](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/art_realistic_moon3_untrained_model.png)
 
 #### Results after training
-### Unet-Resnet18
+### U-Net-Resnet18
 ##### Example1 - input/ground truth/prediction
 ![Input Image1](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/art_realistic_moon.png)
 ![Ground truth1](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/art_realistic_moon_ground_truth.png)
@@ -149,7 +178,7 @@ This is beneficial for our purpose since our model which was written using PyTor
 ![Input Image2](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/real_moon.png)
 ![Prediction image2](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/prediction_real_moon.png)
 
-### Unet-Resnet50
+### U-Net-Resnet50
 ##### Example1 - input/ground truth/prediction
 ![Input Image1](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/resnet50_input.png)
 ![Ground truth1](https://github.com/geochri/lunar-segmentation-openvino/blob/master/images/resnet50_ground_truth.png)
